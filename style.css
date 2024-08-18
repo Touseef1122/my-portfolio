@@ -809,6 +809,43 @@ section p {
   margin: 10px;
 }
 
+
+#cont {
+  position: relative;
+}
+.son {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#control {
+  position: absolute;
+  left: 0;
+  z-index: 50;
+  background: HoneyDew;
+  opacity: 0.7;
+  color: #fff;
+  text-align: center;
+}
+#snap {
+  background-color: dimgray;
+}
+#retake {
+  background-color: coral;
+}
+#close {
+  background-color: lightcoral;
+}
+.hov {
+  opacity: 0.8;
+  transition: all 0.5s;
+}
+.hov:hover {
+  opacity: 1;
+  font-weight: bolder;
+}
+
+
 /* ================================== Animations ================================== */
 @keyframes showText {
   from {

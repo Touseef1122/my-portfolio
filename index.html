@@ -176,8 +176,7 @@
             </div>
             <div class="caption my-0">
               <p class="like text-dark">20 likes</p>
-              <p class="mb-0 text-dark"><b> <a href="https://www.linkedin.com/feed/" target="_blank"
-                    class="pt-1">Tosif__</a>
+              <p class="mb-0 text-dark"><b>
                 </b>
                 <strong>AutoBidUp:</strong> A car bidding platform for posting ads, bidding, and mechanic services.
                 Built with Next.js
@@ -210,8 +209,7 @@
             </div>
             <div class="caption my-0">
               <p class="like text-dark">20 likes</p>
-              <p class="mb-0 text-dark"><b> <a href="https://www.linkedin.com/feed/" target="_blank"
-                    class="pt-1">Tosif__</a>
+              <p class="mb-0 text-dark"><b>
                 </b>
                 <strong>Oncentric:</strong> A CureMD project, Oncentric is a healthcare platform designed to enhance
                 patient care and
@@ -244,10 +242,11 @@
             </div>
             <div class="caption my-0">
               <p class="like text-dark">20 likes</p>
-              <p class="mb-0 text-dark"><b> <a href="https://www.linkedin.com/feed/" target="_blank"
-                    class="pt-1">Tosif__</a>
+              <p class="mb-0 text-dark"><b>
                 </b>
-                <strong>Law Minder</strong>A university project for a law firm, built with React.js, Tailwind CSS, and MongoDB.</p>
+                <strong>Law Minder</strong>A university project for a law firm, built with React.js, Tailwind CSS, and
+                MongoDB.
+              </p>
               <p class="time mb-0">5 minutes ago</p>
             </div>
             <div class="btn-group">
@@ -344,6 +343,44 @@
         </div>
       </div>
     </section>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="cameraModal" tabindex="-1" aria-labelledby="cameraModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="cameraModalLabel">Camera</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div id="wrap">
+              <div id='cont'>
+                <div id="vid" class='son'>
+                  <video id='video' autoplay></video>
+                </div>
+                <div id="capture" class='son'>
+                  <canvas id='canvas'></canvas>
+                  <canvas id='blank' style='display:none;'></canvas>
+                </div>
+                <div id="control">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-md-4"><a id='retake' class='btn btn-block m-1 hov'><i
+                            class="fas fa-sync-alt"></i></a></div>
+                      <div class="col-md-4"><a id='snap' class='btn btn-block m-1 hov'><i class="fas fa-camera"></i></a>
+                      </div>
+                      <div class="col-md-4"><a id='close' class='btn btn-block m-1 hov'><i class="fas fa-times"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
   </div>
 
