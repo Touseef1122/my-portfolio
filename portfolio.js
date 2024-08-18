@@ -158,47 +158,61 @@ document.addEventListener('DOMContentLoaded', () => {
     const canvas = document.getElementById('canvas');
     const context = canvas.getContext('2d');
     let stream;
-    
-    function openCam() {
-      navigator.mediaDevices.getUserMedia({ video: true })
-        .then(s => {
-          stream = s;
-          video.srcObject = stream;
-          video.play();
-        })
-        .catch(e => alert(`Error: ${e.message}`));
+  
+    // Check if getUserMedia is supported
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+      alert('getUserMedia is not supported in this browser.');
+      return;
     }
-    
+  
+    async function openCam() {
+      try {
+        // Request video stream
+        stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        video.srcObject = stream;
+        video.play();
+      } catch (error) {
+        // Handle error (e.g., camera access denied)
+        console.error('Error accessing the camera:', error);
+        alert(`Camera access was denied or is not available. ${error.message}`);
+      }
+    }
+  
     function closeCam() {
       if (stream) {
+        // Stop all video tracks
         stream.getTracks().forEach(track => track.stop());
         video.srcObject = null;
       }
     }
-    
+  
     document.getElementById('open').addEventListener('click', () => {
       openCam();
       document.getElementById('control').style.display = 'block';
     });
-    
+  
     document.getElementById('close').addEventListener('click', () => {
       closeCam();
       cameraModal.hide();
     });
-    
+  
     document.getElementById('snap').addEventListener('click', () => {
-      canvas.width = video.clientWidth;
-      canvas.height = video.clientHeight;
-      context.drawImage(video, 0, 0);
-      document.getElementById('vid').style.zIndex = '20';
-      document.getElementById('capture').style.zIndex = '30';
+      if (video.srcObject) {
+        canvas.width = video.clientWidth;
+        canvas.height = video.clientHeight;
+        context.drawImage(video, 0, 0);
+        document.getElementById('vid').style.zIndex = '20';
+        document.getElementById('capture').style.zIndex = '30';
+      } else {
+        alert('No video stream available to capture.');
+      }
     });
-    
+  
     document.getElementById('retake').addEventListener('click', () => {
       document.getElementById('vid').style.zIndex = '30';
       document.getElementById('capture').style.zIndex = '20';
     });
-    
+  
     cameraIcon.addEventListener('click', () => {
       cameraModal.show();
     });
