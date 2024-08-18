@@ -316,43 +316,43 @@
                     </div>
                     <div class="phone-footer">
                       <!-- Camera Icon -->
+                      <!-- Camera Icon -->
                       <div class="phone-footer-icons">
                         <i class="fas fa-camera" id="camera-icon" style="cursor: pointer; font-size: 24px;"></i>
-                    </div>
-                
-                    <!-- Modal Structure -->
-                    <div class="modal fade" id="cameraModal" tabindex="-1" role="dialog" aria-labelledby="cameraModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content" id="cameraModalLabel">
-                                <div class="modal-body">
-                                    <div id="wrap">
-                                        <div id='cont'>
-                                            <div id='vid' class='son'>
-                                                <video id='video' autoplay></video>
-                                            </div>
-                                            <div id='capture' class='son'>
-                                                <canvas id='canvas'></canvas>
-                                                <canvas id='blank' style='display:none;'></canvas>
-                                            </div>
-                                            <div id="control" style="display: none;">
-                                                <div class="container">
-                                                    <div class="row">
-                                                        <div class="col-md-4"><a id='retake' class='btn btn-block m-1 hov'><i class="fas fa-sync-alt"></i></a></div>
-                                                        <div class="col-md-4"><a id='snap' class='btn btn-block m-1 hov'><i class="fas fa-camera"></i></a></div>
-                                                        <div class="col-md-4"><a id='close' class='btn btn-block m-1 hov'><i class="fas fa-times"></i></a></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <a class='btn btn-block btn-primary text-white' id='open'>Open cam</a>
-                                </div> -->
+                      </div>
+
+                      <!-- Modal Structure -->
+                      <div class="modal fade" id="cameraModal" tabindex="-1" role="dialog"
+                        aria-labelledby="cameraModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <p class="modal-title" id="cameraModalLabel">Camera</p>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
                             </div>
+                            <div class="modal-body">
+                              <div class="panel">
+                                <button id="switchFrontBtn">Front Camera</button>
+                                <button id="switchBackBtn">Back Camera</button>
+                                <button id="snapBtn">Snap</button>
+                              </div>
+                              <div style="width:100%">
+                                <!-- add autoplay muted playsinline for iOS -->
+                                <video id="cam" autoplay muted playsinline>Not available</video>
+                                <canvas id="canvas" style="display:none"></canvas>
+                                <img id="photo" alt="The screen capture will appear in this box.">
+                              </div>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
                         </div>
-                    </div>
+                      </div>
+
+
 
                       <div class="phone-footer-input">
                         <p>Text Message</p>

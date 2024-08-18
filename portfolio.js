@@ -129,90 +129,122 @@ $(function () {
 
 
 // ========================================================================
-// document.getElementById('camera-icon').addEventListener('click', function () {
-//     // Access the camera using getUserMedia API
-//     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-//         navigator.mediaDevices.getUserMedia({ video: true })
-//             .then(function (stream) {
-//                 // Display the video stream in the video element
-//                 const video = document.getElementById('videoElement');
-//                 video.style.display = 'block'; // Show the video element
-//                 video.srcObject = stream;
-//             })
-//             .catch(function (err) {
-//                 console.error("An error occurred: " + err);
-//                 alert("Camera access was denied or not available.");
-//             });
-//     } else {
-//         alert("getUserMedia is not supported in this browser.");
-//     }
-// });
 
-// ========================================================================
+
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
-  const openButton = document.getElementById('open');
   const cameraIcon = document.getElementById('camera-icon');
   const cameraModal = new bootstrap.Modal(document.getElementById('cameraModal'));
-  const video = document.getElementById('video');
-  const canvas = document.getElementById('canvas');
-  const context = canvas.getContext('2d');
-  let stream;
 
-  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-      alert('getUserMedia is not supported in this browser.');
-      return;
-  }
+  let mediaStream = null;
 
-  async function openCam() {
-      try {
-          stream = await navigator.mediaDevices.getUserMedia({ video: true });
-          video.srcObject = stream;
-          video.play();
-      } catch (error) {
-          alert(`Camera access was denied or is not available. ${error.message}`);
+  // Camera constraints
+  var constraints = { 
+    audio: false, 
+    video: { 
+      width: {ideal: 640}, 
+      height: {ideal: 480},
+      facingMode: "environment"
+    } 
+  };
+
+  async function getMediaStream(constraints) {
+    try {
+      mediaStream = await navigator.mediaDevices.getUserMedia(constraints);
+      let video = document.getElementById('cam');    
+      video.srcObject = mediaStream;
+      video.onloadedmetadata = (event) => {
+        video.play();
+      };
+    } catch (err) {
+      console.error(err.message);   
+      alert("Camera access was denied or not available.");
+    }
+  };
+
+  async function switchCamera(cameraMode) {
+    try {
+      // Stop the current video stream
+      if (mediaStream != null && mediaStream.active) {
+        var tracks = mediaStream.getVideoTracks();
+        tracks.forEach(track => track.stop());
       }
+      
+      // Set the video source to null
+      document.getElementById('cam').srcObject = null;
+      
+      // Change "facingMode"
+      constraints.video.facingMode = cameraMode;
+      
+      // Get new media stream
+      await getMediaStream(constraints);
+    } catch (err) {
+      console.error(err.message);
+      alert(err.message);
+    }
   }
 
-  function closeCam() {
-      if (stream) {
-          stream.getTracks().forEach(track => track.stop());
-          video.srcObject = null;
-      }
+  function takePicture() {
+    let canvas = document.getElementById('canvas');
+    let video = document.getElementById('cam');
+    let photo = document.getElementById('photo');  
+    let context = canvas.getContext('2d');
+
+    const height = video.videoHeight;
+    const width = video.videoWidth;
+
+    if (width && height) {
+      canvas.width = width;
+      canvas.height = height;
+      context.drawImage(video, 0, 0, width, height);
+      var data = canvas.toDataURL('image/png');
+      photo.setAttribute('src', data);
+    } else {
+      clearPhoto();
+    }
   }
 
-  if (openButton) {
-      openButton.addEventListener('click', () => {
-          openCam();
-          document.getElementById('control').style.display = 'block';
-      });
-  } else {
-      console.error('Element with ID "open" not found.');
+  function clearPhoto() {
+    let canvas = document.getElementById('canvas');
+    let photo = document.getElementById('photo');
+    let context = canvas.getContext('2d');
+
+    context.fillStyle = "#AAA";
+    context.fillRect(0, 0, canvas.width, canvas.height);
+    var data = canvas.toDataURL('image/png');
+    photo.setAttribute('src', data);
   }
 
-  document.getElementById('close').addEventListener('click', () => {
-      closeCam();
-      cameraModal.hide();
-  });
+  // Event listeners for buttons inside the modal
+  document.getElementById('switchFrontBtn').onclick = (event) => {
+    switchCamera("user");
+  }
 
-  document.getElementById('snap').addEventListener('click', () => {
-      if (video.srcObject) {
-          canvas.width = video.clientWidth;
-          canvas.height = video.clientHeight;
-          context.drawImage(video, 0, 0);
-          document.getElementById('vid').style.zIndex = '20';
-          document.getElementById('capture').style.zIndex = '30';
-      } else {
-          alert('No video stream available to capture.');
-      }
-  });
+  document.getElementById('switchBackBtn').onclick = (event) => {
+    switchCamera("environment");
+  }
 
-  document.getElementById('retake').addEventListener('click', () => {
-      document.getElementById('vid').style.zIndex = '30';
-      document.getElementById('capture').style.zIndex = '20';
-  });
+  document.getElementById('snapBtn').onclick = (event) => {
+    takePicture();
+    event.preventDefault();
+  }
 
+  // Clear photo placeholder
+  clearPhoto();
+
+  // Open the modal and activate the camera on camera icon click
   cameraIcon.addEventListener('click', () => {
-      cameraModal.show();
+    cameraModal.show();
+    getMediaStream(constraints);
+  });
+
+  // Ensure the camera stream stops when the modal is closed
+  document.getElementById('cameraModal').addEventListener('hidden.bs.modal', () => {
+    if (mediaStream) {
+      mediaStream.getTracks().forEach(track => track.stop());
+      document.getElementById('cam').srcObject = null;
+    }
   });
 });
