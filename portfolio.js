@@ -153,7 +153,7 @@ document.getElementById('camera-icon').addEventListener('click', function () {
 
 document.addEventListener('DOMContentLoaded', () => {
     const cameraIcon = document.getElementById('camera-icon');
-    const modal = new bootstrap.Modal(document.getElementById('cameraModal'));
+    const cameraModal = new bootstrap.Modal(document.getElementById('cameraModal'));
     const video = document.getElementById('video');
     const canvas = document.getElementById('canvas');
     const context = canvas.getContext('2d');
@@ -183,7 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
     document.getElementById('close').addEventListener('click', () => {
       closeCam();
-      modal.hide();
+      cameraModal.hide();
     });
   
     document.getElementById('snap').addEventListener('click', () => {
@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   
     cameraIcon.addEventListener('click', () => {
-      modal.show();
+      cameraModal.show();
     });
   });
-  
+    

@@ -315,10 +315,50 @@
                       </div>
                     </div>
                     <div class="phone-footer">
+                      <!-- Camera Icon -->
                       <div class="phone-footer-icons">
                         <i class="fas fa-camera" id="camera-icon" style="cursor: pointer; font-size: 24px;"></i>
                       </div>
-                      <video id="videoElement" autoplay></video>
+
+                      <!-- Modal -->
+                      <div class="modal fade" id="cameraModal" tabindex="-1" aria-labelledby="cameraModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="cameraModalLabel">Camera</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              <div id="wrap">
+                                <div id='cont'>
+                                  <div id="vid" class='son'>
+                                    <video id='video' autoplay></video>
+                                  </div>
+                                  <div id="capture" class='son'>
+                                    <canvas id='canvas'></canvas>
+                                    <canvas id='blank' style='display:none;'></canvas>
+                                  </div>
+                                  <div id="control">
+                                    <div class="container">
+                                      <div class="row">
+                                        <div class="col-md-4"><a id='retake' class='btn btn-block m-1 hov'><i
+                                              class="fas fa-sync-alt"></i></a></div>
+                                        <div class="col-md-4"><a id='snap' class='btn btn-block m-1 hov'><i
+                                              class="fas fa-camera"></i></a></div>
+                                        <div class="col-md-4"><a id='close' class='btn btn-block m-1 hov'><i
+                                              class="fas fa-times"></i></a></div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
 
 
                       <div class="phone-footer-input">
@@ -343,44 +383,6 @@
         </div>
       </div>
     </section>
-
-
-    <!-- Modal -->
-    <div class="modal fade" id="cameraModal" tabindex="-1" aria-labelledby="cameraModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="cameraModalLabel">Camera</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div id="wrap">
-              <div id='cont'>
-                <div id="vid" class='son'>
-                  <video id='video' autoplay></video>
-                </div>
-                <div id="capture" class='son'>
-                  <canvas id='canvas'></canvas>
-                  <canvas id='blank' style='display:none;'></canvas>
-                </div>
-                <div id="control">
-                  <div class="container">
-                    <div class="row">
-                      <div class="col-md-4"><a id='retake' class='btn btn-block m-1 hov'><i
-                            class="fas fa-sync-alt"></i></a></div>
-                      <div class="col-md-4"><a id='snap' class='btn btn-block m-1 hov'><i class="fas fa-camera"></i></a>
-                      </div>
-                      <div class="col-md-4"><a id='close' class='btn btn-block m-1 hov'><i class="fas fa-times"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
   </div>
 
