@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Touseef: Portfolio</title>
+  <meta name="author" content="Touseef Shahbaz" />
+  <meta name="keywords" content="Web Developer" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A web developer's portfolio created with Bootstrap 5 and JavaScript." />
+
+  <!-- CSS Libraries -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+  <link href="style.css" rel="stylesheet">
+  <link href="anemation.css" rel="stylesheet">
+
+  <!-- jQuery Library -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+</head>
+
+<body class="hidden">
+
+  <div id="showContentBtn" class="welcome" onclick="toggle_div_fun('sectiontohide');">
+    <div class="heading-container">
+      <h1 class="bubble-text">Welcome to My Portfolio</h1>
+    </div>
+    <div class="area" id="sectiontohide">
+      <div class="cross spin">
+        <div class="cube middle explode">
+          <div class="front face shape-shift"></div>
+          <div class="back face shape-shift"></div>
+          <div class="right face shape-shift"></div>
+          <div class="left face shape-shift"></div>
+          <div class="top face shape-shift"></div>
+          <div class="bottom face shape-shift"></div>
+        </div>
+        <div class="cube upper explode">
+          <div class="front face1 shape-shift"></div>
+          <div class="back face1 shape-shift"></div>
+          <div class="right face1 shape-shift"></div>
+          <div class="left face1 shape-shift"></div>
+          <div class="top face1 shape-shift"></div>
+          <div class="bottom face1 shape-shift"></div>
+        </div>
+        <div class="cube lower explode">
+          <div class="front face2 shape-shift"></div>
+          <div class="back face2 shape-shift"></div>
+          <div class="right face2 shape-shift"></div>
+          <div class="left face2 shape-shift"></div>
+          <div class="top face2 shape-shift"></div>
+          <div class="bottom face2 shape-shift"></div>
+        </div>
+        <div class="cube mid-left explode">
+          <div class="front face3 shape-shift"></div>
+          <div class="back face3 shape-shift"></div>
+          <div class="right face3 shape-shift"></div>
+          <div class="left face3 shape-shift"></div>
+          <div class="top face3 shape-shift"></div>
+          <div class="bottom face3 shape-shift"></div>
+        </div>
+        <div class="cube mid-right explode">
+          <div class="front face4 shape-shift"></div>
+          <div class="back face4 shape-shift"></div>
+          <div class="right face4 shape-shift"></div>
+          <div class="left face4 shape-shift"></div>
+          <div class="top face4 shape-shift"></div>
+          <div class="bottom face4 shape-shift"></div>
+        </div>
+        <div class="cube mid-front explode">
+          <div class="front face5 shape-shift"></div>
+          <div class="back face5 shape-shift"></div>
+          <div class="right face5 shape-shift"></div>
+          <div class="left face5 shape-shift"></div>
+          <div class="top face5 shape-shift"></div>
+          <div class="bottom face5 shape-shift"></div>
+        </div>
+        <div class="cube mid-back explode">
+          <div class="front face shape-shift"></div>
+          <div class="back face shape-shift"></div>
+          <div class="right face shape-shift"></div>
+          <div class="left face shape-shift"></div>
+          <div class="top face shape-shift"></div>
+          <div class="bottom face shape-shift"></div>
+        </div>
+      </div>
+      <div class="neon-text">Click to continue</div>
+
+      <!-- <button id="showContentBtn" class="btn btn-primary" onclick="toggle_div_fun('sectiontohide');">Show Portfolio</button> -->
+
+    </div>
+  </div>
+
+  <div id="pageContent">
+    <!-- Navigation Bar -->
+    <nav>
+      <a href="#about" data-anchor="about">About</a>
+      <a href="#experties" data-anchor="experties">Experties</a>
+      <a href="#projects" data-anchor="projects">Projects</a>
+      <a href="#contact" data-anchor="contact">Contact</a>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="about">
+      <div class="container custom-container">
+        <div class="row ">
+          <div class="col-12 col-lg-6  text-start ps-0 pe-0 py-0 py-lg-2 make-center">
+            <div class="  justify-content-start align-items-center">
+              <h1>A Web Developer</h1>
+              <p>Over 3 years of experience enhancing responsive web applications. Skilled in web development, committed
+                to delivering seamless user experiences.</p>
+            </div>
+          </div>
+          <div class="col-12 col-lg-6 pr-0 not-visible">
+            <img class="img-me" width="300px" height="400px" src="assets/banner-img.svg" alt="Banner Image">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="experties" id="experties">
+      <div class="py-2"></div>
+      <di class="card__content align-items-center py-1">
+        <h2 class="text-dark pt-2">Experties</h2>
+      </di>
+      <div class="container-fuid">
+        <img class="img-styl" src="/assets/e1.webp" id="img1">
+        <img class="img-styl" src="/assets/e2.webp" id="img2">
+        <img class="img-styl" src="/assets/e4.webp" id="img3">
+        <img class="img-styl" src="/assets/e5.webp" id="img4">
+        <img class="img-styl" src="/assets/e6.webp" id="img5">
+        <img class="img-styl" src="/assets/e7.webp" id="img6">
+        <img class="img-styl" src="/assets/e8.webp" id="img7">
+        <img class="img-styl" src="/assets/e9.webp" id="img8">
+        <img class="img-styl" src="/assets/e10.webp" id="img9">
+        <img class="img-styl" src="/assets/e11.webp" id="img10">
+        <img class="img-styl" src="/assets/e12.webp" id="img11">
+        <img class="img-styl" src="/assets/e13.webp" id="img12">
+        <img class="img-styl" src="/assets/e14.webp" id="img13">
+        <img class="img-styl" src="/assets/e15.webp" id="img14">
+        <img class="img-styl" src="/assets/e16.webp" id="img15">
+        <img class="img-styl" src="/assets/e17.webp" id="img16">
+        <img class="img-styl" src="/assets/e18.webp" id="img17">
+        <div class="button-container">
+          <button id="toggle-button">Click Me</button>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Services Section -->
+    <section id="projects">
+      <div class="insta-feed row">
+        <!-- <div class="card-slider "> -->
+        <div class="col-12 col-md-4">
+          <div class="card center ">
+            <div class="username">
+              <div class="image">
+                <img src="./assets/profile.png">
+              </div>
+              <div class="id d-flex">
+                <a href="https://www.linkedin.com/feed/" target="_blank" class="pt-1">Tosif__</a>
+              </div>
+            </div>
+            <div class="post">
+              <a href="https://royal-fleet.vercel.app/" target="_blank">
+                <img
+                  src="https://i0.wp.com/myadventuresacrosstheworld.com/wp-content/uploads/2018/03/rice-fields-bali-spa-1-e1522157798920.jpg?resize=1000%2C667&amp;ssl=1">
+              </a>
+            </div>
+            <div class="caption my-0">
+              <p class="like text-dark">20 likes</p>
+              <p class="mb-0 text-dark"><b> <a href="https://www.linkedin.com/feed/" target="_blank"
+                    class="pt-1">Tosif__</a>
+                </b>
+                AutoBidUp: A car bidding platform for posting ads, bidding, and mechanic services. Built with Next.js
+                and Django. </p>
+              <p class="time mb-0">5 minutes ago</p>
+            </div>
+            <div class="btn-group">
+              <button type="button" class="btn-love"><i class="far fa-heart fa-lg"></i></button>
+              <button type="button" class="btn-comment"><i class="far fa-comment fa-lg"></i></button>
+              <button type="button" class="btn-share"><i class="fas fa-share fa-lg "></i></button>
+              <button type="button" class="btn-bookmark"><i class="far fa-bookmark fa-lg"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="card">
+            <div class="username">
+              <div class="image">
+                <img src="./assets/profile.png">
+              </div>
+              <div class="id d-flex">
+                <a href="https://www.linkedin.com/feed/" target="_blank" class="pt-1">Tosif__</a>
+              </div>
+            </div>
+            <div class="post">
+              <a href="https://royal-fleet.vercel.app/" target="_blank">
+                <img
+                  src="https://i0.wp.com/myadventuresacrosstheworld.com/wp-content/uploads/2018/03/rice-fields-bali-spa-1-e1522157798920.jpg?resize=1000%2C667&amp;ssl=1">
+              </a>
+            </div>
+            <div class="caption my-0">
+              <p class="like text-dark">20 likes</p>
+              <p class="mb-0 text-dark"><b> <a href="https://www.linkedin.com/feed/" target="_blank"
+                    class="pt-1">Tosif__</a>
+                </b>
+                AutoBidUp: A car bidding platform for posting ads, bidding, and mechanic services. Built with Next.js
+                and Django. </p>
+              <p class="time mb-0">5 minutes ago</p>
+            </div>
+            <div class="btn-group">
+              <button type="button" class="btn-love"><i class="far fa-heart fa-lg"></i></button>
+              <button type="button" class="btn-comment"><i class="far fa-comment fa-lg"></i></button>
+              <button type="button" class="btn-share"><i class="fas fa-share fa-lg "></i></button>
+              <button type="button" class="btn-bookmark"><i class="far fa-bookmark fa-lg"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="card col-12 col-md-4">
+            <div class="username">
+              <div class="image">
+                <img src="./assets/profile.png">
+              </div>
+              <div class="id d-flex">
+                <a href="https://www.linkedin.com/feed/" target="_blank" class="pt-1">Tosif__</a>
+              </div>
+            </div>
+            <div class="post">
+              <a href="https://royal-fleet.vercel.app/" target="_blank">
+                <img
+                  src="https://i0.wp.com/myadventuresacrosstheworld.com/wp-content/uploads/2018/03/rice-fields-bali-spa-1-e1522157798920.jpg?resize=1000%2C667&amp;ssl=1">
+              </a>
+            </div>
+            <div class="caption my-0">
+              <p class="like text-dark">20 likes</p>
+              <p class="mb-0 text-dark"><b> <a href="https://www.linkedin.com/feed/" target="_blank"
+                    class="pt-1">Tosif__</a>
+                </b>
+                AutoBidUp: A car bidding platform for posting ads, bidding, and mechanic services. Built with Next.js
+                and Django. </p>
+              <p class="time mb-0">5 minutes ago</p>
+            </div>
+            <div class="btn-group">
+              <button type="button" class="btn-love"><i class="far fa-heart fa-lg"></i></button>
+              <button type="button" class="btn-comment"><i class="far fa-comment fa-lg"></i></button>
+              <button type="button" class="btn-share"><i class="fas fa-share fa-lg "></i></button>
+              <button type="button" class="btn-bookmark"><i class="far fa-bookmark fa-lg"></i></button>
+            </div>
+          </div>
+        </div>
+        <!-- </div> -->
+      </div>
+    </section>
+
+
+
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <div class="container">
+            <div class="phone-graphic">
+              <div class="phone-case">
+                <div class="phone-container-outer">
+                  <div class="phone-container-inner">
+                    <div class="phone-header">
+                      <p class="phone-header-time">1:02</p>
+                      <p class="phone-header-icons">
+                        <i class="fas fa-signal"></i>
+                        <i class="fas fa-wifi"></i>
+                        <i class="fas fa-battery-full"></i>
+                      </p>
+
+                    </div>
+                    <div class="contact-image">
+                      <span class="material-icons">person</span>
+                    </div>
+                    <p class="contact-phone">+923238459887</p>
+                    <div class="phone-messages">
+                      <div class="message message-you">
+                        <p class="text-white">Email</p>
+                      </div>
+                      <div class="message message-contact">
+                        <p>Tosif.shahbax@gmail.com</p>
+                      </div>
+                      <div class="message message-you">
+                        <p class="text-white">LinkedIN</p>
+                      </div>
+                      <div class="message message-contact">
+                        <p><a href="https://www.linkedin.com/in/touseef-shahbaz-f212200/" target="_blank">Touseef
+                            Shahbaz</a></p>
+                      </div>
+                      <div class="message message-you">
+                        <p class="text-white">GitHub</p>
+                      </div>
+                      <div class="message message-contact">
+                        <p> <a href="https://github.com/Touseef1122">Touseef1122</a></p>
+                      </div>
+                      <div class="message message-contact">
+                        <p>If you need more information please click on "Dowmload CV" or find Pakistan and click on it.
+                        </p>
+                      </div>
+                      <div class="message message-contact">
+                        <p class="text-danger">Warning Dont Click On Camera. Thank you !</p>
+                      </div>
+                    </div>
+                    <div class="phone-footer">
+                      <div class="phone-footer-icons">
+                        <i class="fas fa-camera" id="camera-icon" style="cursor: pointer; font-size: 24px;"></i>
+                      </div>
+                      <video id="videoElement" autoplay></video>
+
+
+                      <div class="phone-footer-input">
+                        <p>Text Message</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> <!-- .phone-case -->
+            </div> <!-- .phone-graphic -->
+          </div>
+        </div> <!-- .col-12 col-md-6 -->
+
+        <div class="col-12 col-md-6">
+          <div class="globe-bg">
+            <canvas id="globe"></canvas>
+            <div id='countryLabel'></div>
+            <a class="contact-btn" href="./assets/Touseef-Shahbaz.pdf" target="_blank">
+              Download CV
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  <!-- JavaScript -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://unpkg.com/topojson@3.0.2/dist/topojson.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  <!-- Ensure the external libraries are loaded first -->
+  <script type="module" src="globe.js"></script>
+  <script src="portfolio.js"></script>
+</body>
+
+</html>
