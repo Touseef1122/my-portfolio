@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const canvas = document.getElementById('canvas');
     const context = canvas.getContext('2d');
     let stream;
-  
+    
     function openCam() {
       navigator.mediaDevices.getUserMedia({ video: true })
         .then(s => {
@@ -168,24 +168,24 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch(e => alert(`Error: ${e.message}`));
     }
-  
+    
     function closeCam() {
       if (stream) {
         stream.getTracks().forEach(track => track.stop());
         video.srcObject = null;
       }
     }
-  
+    
     document.getElementById('open').addEventListener('click', () => {
       openCam();
       document.getElementById('control').style.display = 'block';
     });
-  
+    
     document.getElementById('close').addEventListener('click', () => {
       closeCam();
       cameraModal.hide();
     });
-  
+    
     document.getElementById('snap').addEventListener('click', () => {
       canvas.width = video.clientWidth;
       canvas.height = video.clientHeight;
@@ -193,14 +193,14 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('vid').style.zIndex = '20';
       document.getElementById('capture').style.zIndex = '30';
     });
-  
+    
     document.getElementById('retake').addEventListener('click', () => {
       document.getElementById('vid').style.zIndex = '30';
       document.getElementById('capture').style.zIndex = '20';
     });
-  
+    
     cameraIcon.addEventListener('click', () => {
       cameraModal.show();
     });
   });
-    
+  
