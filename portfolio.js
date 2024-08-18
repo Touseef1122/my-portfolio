@@ -129,7 +129,26 @@ $(function () {
 
 
 // ========================================================================
+document.getElementById('camera-icon').addEventListener('click', function () {
+    // Access the camera using getUserMedia API
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function (stream) {
+                // Display the video stream in the video element
+                const video = document.getElementById('videoElement');
+                video.style.display = 'block'; // Show the video element
+                video.srcObject = stream;
+            })
+            .catch(function (err) {
+                console.error("An error occurred: " + err);
+                alert("Camera access was denied or not available.");
+            });
+    } else {
+        alert("getUserMedia is not supported in this browser.");
+    }
+});
 
+// ========================================================================
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -184,5 +203,4 @@ document.addEventListener('DOMContentLoaded', () => {
       cameraModal.show();
     });
   });
-  
     
