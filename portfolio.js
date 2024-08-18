@@ -129,92 +129,90 @@ $(function () {
 
 
 // ========================================================================
-document.getElementById('camera-icon').addEventListener('click', function () {
-    // Access the camera using getUserMedia API
-    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-        navigator.mediaDevices.getUserMedia({ video: true })
-            .then(function (stream) {
-                // Display the video stream in the video element
-                const video = document.getElementById('videoElement');
-                video.style.display = 'block'; // Show the video element
-                video.srcObject = stream;
-            })
-            .catch(function (err) {
-                console.error("An error occurred: " + err);
-                alert("Camera access was denied or not available.");
-            });
-    } else {
-        alert("getUserMedia is not supported in this browser.");
-    }
-});
+// document.getElementById('camera-icon').addEventListener('click', function () {
+//     // Access the camera using getUserMedia API
+//     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+//         navigator.mediaDevices.getUserMedia({ video: true })
+//             .then(function (stream) {
+//                 // Display the video stream in the video element
+//                 const video = document.getElementById('videoElement');
+//                 video.style.display = 'block'; // Show the video element
+//                 video.srcObject = stream;
+//             })
+//             .catch(function (err) {
+//                 console.error("An error occurred: " + err);
+//                 alert("Camera access was denied or not available.");
+//             });
+//     } else {
+//         alert("getUserMedia is not supported in this browser.");
+//     }
+// });
 
 // ========================================================================
 
-
 document.addEventListener('DOMContentLoaded', () => {
-    const cameraIcon = document.getElementById('camera-icon');
-    const cameraModal = new bootstrap.Modal(document.getElementById('cameraModal'));
-    const video = document.getElementById('video');
-    const canvas = document.getElementById('canvas');
-    const context = canvas.getContext('2d');
-    let stream;
-  
-    // Check if getUserMedia is supported
-    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+  const openButton = document.getElementById('open');
+  const cameraIcon = document.getElementById('camera-icon');
+  const cameraModal = new bootstrap.Modal(document.getElementById('cameraModal'));
+  const video = document.getElementById('video');
+  const canvas = document.getElementById('canvas');
+  const context = canvas.getContext('2d');
+  let stream;
+
+  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
       alert('getUserMedia is not supported in this browser.');
       return;
-    }
-  
-    async function openCam() {
+  }
+
+  async function openCam() {
       try {
-        // Request video stream
-        stream = await navigator.mediaDevices.getUserMedia({ video: true });
-        video.srcObject = stream;
-        video.play();
+          stream = await navigator.mediaDevices.getUserMedia({ video: true });
+          video.srcObject = stream;
+          video.play();
       } catch (error) {
-        // Handle error (e.g., camera access denied)
-        console.error('Error accessing the camera:', error);
-        alert(`Camera access was denied or is not available. ${error.message}`);
+          alert(`Camera access was denied or is not available. ${error.message}`);
       }
-    }
-  
-    function closeCam() {
+  }
+
+  function closeCam() {
       if (stream) {
-        // Stop all video tracks
-        stream.getTracks().forEach(track => track.stop());
-        video.srcObject = null;
+          stream.getTracks().forEach(track => track.stop());
+          video.srcObject = null;
       }
-    }
-  
-    document.getElementById('open').addEventListener('click', () => {
-      openCam();
-      document.getElementById('control').style.display = 'block';
-    });
-  
-    document.getElementById('close').addEventListener('click', () => {
+  }
+
+  if (openButton) {
+      openButton.addEventListener('click', () => {
+          openCam();
+          document.getElementById('control').style.display = 'block';
+      });
+  } else {
+      console.error('Element with ID "open" not found.');
+  }
+
+  document.getElementById('close').addEventListener('click', () => {
       closeCam();
       cameraModal.hide();
-    });
-  
-    document.getElementById('snap').addEventListener('click', () => {
+  });
+
+  document.getElementById('snap').addEventListener('click', () => {
       if (video.srcObject) {
-        canvas.width = video.clientWidth;
-        canvas.height = video.clientHeight;
-        context.drawImage(video, 0, 0);
-        document.getElementById('vid').style.zIndex = '20';
-        document.getElementById('capture').style.zIndex = '30';
+          canvas.width = video.clientWidth;
+          canvas.height = video.clientHeight;
+          context.drawImage(video, 0, 0);
+          document.getElementById('vid').style.zIndex = '20';
+          document.getElementById('capture').style.zIndex = '30';
       } else {
-        alert('No video stream available to capture.');
+          alert('No video stream available to capture.');
       }
-    });
-  
-    document.getElementById('retake').addEventListener('click', () => {
+  });
+
+  document.getElementById('retake').addEventListener('click', () => {
       document.getElementById('vid').style.zIndex = '30';
       document.getElementById('capture').style.zIndex = '20';
-    });
-  
-    cameraIcon.addEventListener('click', () => {
-      cameraModal.show();
-    });
   });
-  
+
+  cameraIcon.addEventListener('click', () => {
+      cameraModal.show();
+  });
+});
