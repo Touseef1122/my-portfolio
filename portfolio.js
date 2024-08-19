@@ -233,5 +233,11 @@ $(document).ready(function () {
     event.preventDefault();
   });
 
-  // Ensure the camera stream stops whe
-
+  // Ensure the camera stream stops when the modal is closed
+  cameraModalEl.on('hidden.bs.modal', function () {
+    if (mediaStream) {
+      mediaStream.getTracks().forEach(track => track.stop());
+      $('#cam').attr('srcObject', null);
+    }
+  });
+});
