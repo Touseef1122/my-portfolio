@@ -826,10 +826,9 @@ section p {
 /* Modal content box */
 .modal-content {
   background-color: #fff;
-  margin: 15% auto;
-  padding: 20px;
+  margin: 8% auto;
   border: 1px solid #888;
-  width: 80%;
+  width: 55%;
   position: relative;
 }
 
