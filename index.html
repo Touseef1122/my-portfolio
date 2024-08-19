@@ -10,7 +10,7 @@
   <meta name="description" content="A web developer's portfolio created with Bootstrap 5 and JavaScript." />
 
   <!-- CSS Libraries -->
-  <link rel="icon" href="./assets/profile.png" type="image/x-icon">
+  <link rel="icon" href="./assets/profile.png" style="border-radius: 30%;" type="image/x-icon">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -320,32 +320,30 @@
                         <i class="fas fa-camera" id="camera-icon" style="cursor: pointer; font-size: 24px;"></i>
                       </div>
 
-                      <!-- The Modal -->
                       <!-- Modal HTML -->
-                      <div id="cameraModal" class="modal fade" >
-                        <div class="">
+                      <div id="cameraModal" class="modal fade" tabindex="-1" aria-labelledby="cameraModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
                           <div class="modal-content">
-                            <div class="modal-header ">
+                            <div class="modal-header">
                               <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                aria-label="Close"> </button>
+                                aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                               <div class="panel">
                                 <button id="switchFrontBtn" >Front Camera</button>
-                                <button id="switchBackBtn" >Back Camera</button>
-                                <button id="snapBtn" >Snap</button>
+                                <button id="switchBackBtn">Back Camera</button>
+                                <button id="snapBtn">Snap</button>
                               </div>
                               <div style="width:100%">
-                                <video id="cam" autoplay muted playsinline>Not available</video>
+                                <video id="cam" width="300px" autoplay muted playsinline>Not available</video>
                                 <canvas id="canvas" style="display:none"></canvas>
-                                <img id="photo" alt="The screen capture will appear in this box.">
+                                <img id="photo" width="300px" alt="The screen capture will appear in this box.">
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
-
-
 
                       <div class="phone-footer-input">
                         <p>Text Message</p>

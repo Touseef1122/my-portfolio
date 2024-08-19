@@ -199,5 +199,19 @@ export const init = () => {
     autorotate = d3.timer(rotate);
   });
 };
+const enter = (country) => {
+  const name = countryList.find((c) => parseInt(c.id) === parseInt(country.id))?.name || '';
+  elements.countryLabel.text(name);
+
+  // Check if the country is Pakistan
+  if (name === 'Pakistan') {
+    // Trigger the link click event to download the CV
+    const cvLink = document.querySelector('.contact-btn');
+    if (cvLink) {
+      cvLink.click();
+    }
+  }
+};
+
 
 init();
