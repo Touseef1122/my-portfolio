@@ -130,13 +130,12 @@ $(function () {
 
 // ========================================================================
 
+$(document).ready(function () {
+  const cameraIcon = $('#camera-icon');
+  const cameraModalEl = $('#cameraModal');
 
-
-
-
-document.addEventListener('DOMContentLoaded', () => {
-  const cameraIcon = document.getElementById('camera-icon');
-  const cameraModal = new bootstrap.Modal(document.getElementById('cameraModal'));
+  // Initialize the modal with default behavior (no 'static' backdrop)
+  const cameraModal = new bootstrap.Modal(cameraModalEl[0]);
 
   let mediaStream = null;
 
@@ -144,8 +143,8 @@ document.addEventListener('DOMContentLoaded', () => {
   var constraints = { 
     audio: false, 
     video: { 
-      width: {ideal: 640}, 
-      height: {ideal: 480},
+      width: { ideal: 640 }, 
+      height: { ideal: 480 },
       facingMode: "environment"
     } 
   };
@@ -153,32 +152,26 @@ document.addEventListener('DOMContentLoaded', () => {
   async function getMediaStream(constraints) {
     try {
       mediaStream = await navigator.mediaDevices.getUserMedia(constraints);
-      let video = document.getElementById('cam');    
+      let video = $('#cam')[0];
       video.srcObject = mediaStream;
-      video.onloadedmetadata = (event) => {
+      video.onloadedmetadata = () => {
         video.play();
       };
     } catch (err) {
       console.error(err.message);   
       alert("Camera access was denied or not available.");
     }
-  };
+  }
 
   async function switchCamera(cameraMode) {
     try {
-      // Stop the current video stream
-      if (mediaStream != null && mediaStream.active) {
-        var tracks = mediaStream.getVideoTracks();
+      if (mediaStream) {
+        let tracks = mediaStream.getTracks();
         tracks.forEach(track => track.stop());
       }
-      
-      // Set the video source to null
-      document.getElementById('cam').srcObject = null;
-      
-      // Change "facingMode"
+
+      $('#cam').attr('srcObject', null);
       constraints.video.facingMode = cameraMode;
-      
-      // Get new media stream
       await getMediaStream(constraints);
     } catch (err) {
       console.error(err.message);
@@ -187,9 +180,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function takePicture() {
-    let canvas = document.getElementById('canvas');
-    let video = document.getElementById('cam');
-    let photo = document.getElementById('photo');  
+    let canvas = $('#canvas')[0];
+    let video = $('#cam')[0];
+    let photo = $('#photo');
     let context = canvas.getContext('2d');
 
     const height = video.videoHeight;
@@ -199,52 +192,46 @@ document.addEventListener('DOMContentLoaded', () => {
       canvas.width = width;
       canvas.height = height;
       context.drawImage(video, 0, 0, width, height);
-      var data = canvas.toDataURL('image/png');
-      photo.setAttribute('src', data);
+      let data = canvas.toDataURL('image/png');
+      photo.attr('src', data);
     } else {
       clearPhoto();
     }
   }
 
   function clearPhoto() {
-    let canvas = document.getElementById('canvas');
-    let photo = document.getElementById('photo');
+    let canvas = $('#canvas')[0];
+    let photo = $('#photo');
     let context = canvas.getContext('2d');
 
     context.fillStyle = "#AAA";
     context.fillRect(0, 0, canvas.width, canvas.height);
-    var data = canvas.toDataURL('image/png');
-    photo.setAttribute('src', data);
-  }
-
-  // Event listeners for buttons inside the modal
-  document.getElementById('switchFrontBtn').onclick = (event) => {
-    switchCamera("user");
-  }
-
-  document.getElementById('switchBackBtn').onclick = (event) => {
-    switchCamera("environment");
-  }
-
-  document.getElementById('snapBtn').onclick = (event) => {
-    takePicture();
-    event.preventDefault();
+    let data = canvas.toDataURL('image/png');
+    photo.attr('src', data);
   }
 
   // Clear photo placeholder
   clearPhoto();
 
   // Open the modal and activate the camera on camera icon click
-  cameraIcon.addEventListener('click', () => {
+  cameraIcon.on('click', function () {
     cameraModal.show();
     getMediaStream(constraints);
   });
 
-  // Ensure the camera stream stops when the modal is closed
-  document.getElementById('cameraModal').addEventListener('hidden.bs.modal', () => {
-    if (mediaStream) {
-      mediaStream.getTracks().forEach(track => track.stop());
-      document.getElementById('cam').srcObject = null;
-    }
+  // Event listeners for buttons inside the modal
+  $('#switchFrontBtn').on('click', function () {
+    switchCamera("user");
   });
-});
+
+  $('#switchBackBtn').on('click', function () {
+    switchCamera("environment");
+  });
+
+  $('#snapBtn').on('click', function (event) {
+    takePicture();
+    event.preventDefault();
+  });
+
+  // Ensure the camera stream stops whe
+
