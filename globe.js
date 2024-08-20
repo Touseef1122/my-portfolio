@@ -161,7 +161,7 @@ const mousemove = (event) => {
   if (country && country !== state.currentCountry) {
     state.currentCountry = country;
     render();
-    enter(country);
+    enter(country);  // Call the enter function when the country changes
   }
 };
 
@@ -170,18 +170,29 @@ const enter = (country) => {
   elements.countryLabel.text(name);
 };
 
-const leave = (country) => {
-  elements.countryLabel.text('');
+const handleClick = (event) => {
+  const country = getCountry(event);
+
+  if (country) {
+    const name = countryList.find((c) => parseInt(c.id) === parseInt(country.id))?.name || '';
+    
+    // Check if the clicked country is Pakistan
+    if (name === 'Pakistan') {
+      // Trigger the link click event to download the CV
+      window.open('/Touseef-Shahbaz.pdf.pdf', '_blank');    }
+  }
 };
 
 export const init = () => {
   setAngles();
+  
   elements.canvas.call(
     d3.drag()
       .on('start', dragstarted)
       .on('drag', dragged)
       .on('end', dragended))
     .on('mousemove', mousemove)
+    .on('click', handleClick)  // Add click handler here
     .on('touchmove', mousemove);
 
   loadData((world, cList) => {
@@ -199,19 +210,5 @@ export const init = () => {
     autorotate = d3.timer(rotate);
   });
 };
-const enter = (country) => {
-  const name = countryList.find((c) => parseInt(c.id) === parseInt(country.id))?.name || '';
-  elements.countryLabel.text(name);
-
-  // Check if the country is Pakistan
-  if (name === 'Pakistan') {
-    // Trigger the link click event to download the CV
-    const cvLink = document.querySelector('.contact-btn');
-    if (cvLink) {
-      cvLink.click();
-    }
-  }
-};
-
 
 init();

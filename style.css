@@ -826,9 +826,11 @@ section p {
 /* Modal content box */
 .modal-content {
   background-color: #fff;
-  margin: 150px !important;
+  /* margin: 150px !important; */
+  display: flex;
+  flex-direction: row;
   border: 1px solid #888;
-  width: 55%;
+  width: 80%;
   position: relative;
 }
 
