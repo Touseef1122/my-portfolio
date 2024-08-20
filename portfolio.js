@@ -134,8 +134,10 @@ $(function () {
 $(document).ready(function () {
   const cameraIcon = $('#camera-icon');
   const cameraModalEl = $('#cameraModal');
+  const body = $('body');
+  let scrollPosition = 0;
 
-  // Initialize the modal with default behavior (no 'static' backdrop)
+  // Initialize the modal
   const cameraModal = new bootstrap.Modal(cameraModalEl[0]);
 
   let mediaStream = null;
@@ -216,6 +218,14 @@ $(document).ready(function () {
 
   // Open the modal and activate the camera on camera icon click
   cameraIcon.on('click', function () {
+    // Preserve the current scroll position
+    scrollPosition = window.pageYOffset;
+    body.css({
+      position: 'fixed',
+      top: `-${scrollPosition}px`,
+      width: '100%',
+    });
+    body.addClass('no-scroll');  // Add no-scroll class to body
     cameraModal.show();
     getMediaStream(constraints);
   });
@@ -240,5 +250,14 @@ $(document).ready(function () {
       mediaStream.getTracks().forEach(track => track.stop());
       $('#cam').attr('srcObject', null);
     }
+    body.removeClass('no-scroll');  // Remove no-scroll class from body
+    // Reset the body's scroll position
+    body.css({
+      position: '',
+      top: '',
+      width: '',
+    });
+    window.scrollTo(0, scrollPosition); // Restore the scroll position
   });
 });
+
