@@ -199,7 +199,7 @@ $(document).ready(function () {
       photo.attr('src', data);
 
       // Hide other buttons and video
-      $('#switchFrontBtn, #switchBackBtn, #cam').hide();
+      $('#switchFrontBtn, #switchBackBtn,#snapBtn, #cam').hide();
 
       // Show Thank U message
       $('.thank-you-message').show();
