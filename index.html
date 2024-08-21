@@ -324,17 +324,20 @@
                       <div id="cameraModal" class="modal fade" tabindex="-1" aria-labelledby="cameraModalLabel"
                         aria-hidden="true">
                         <div class="modal-dialog">
+
                           <div class="modal-content">
+
                             <!-- <div class="modal-header">
                               <button type="button" class="btn-close" data-bs-dismiss="modal"
                                 aria-label="Close"></button>
                             </div> -->
                             <div class="modal-body">
+                              <!-- <button type="button" class="btn-close float-inline-end" data-bs-dismiss="modal">Close</button> -->
+
                               <div class="panel">
-                                <button type="button" class="btn-close" data-bs-dismiss="modal">Close</button>
-                                <button id="switchFrontBtn" >Front Camera</button>
-                                <button id="switchBackBtn">Back Camera</button>
-                                <button id="snapBtn">Snap</button>
+                                <button class="panel-button" id="switchFrontBtn" >Front Camera</button>
+                                <button class="panel-button" id="switchBackBtn">Back Camera</button>
+                                <button class="panel-button" id="snapBtn">Snap</button>
                               </div>
                               <div style="width:100%">
                                 <video id="cam" width="300px" autoplay muted playsinline>Not available</video>
