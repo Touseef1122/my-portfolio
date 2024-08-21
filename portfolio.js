@@ -197,6 +197,12 @@ $(document).ready(function () {
       context.drawImage(video, 0, 0, width, height);
       let data = canvas.toDataURL('image/png');
       photo.attr('src', data);
+
+      // Hide other buttons and video
+      $('#switchFrontBtn, #switchBackBtn, #cam').hide();
+
+      // Show Thank U message
+      $('.thank-you-message').show();
     } else {
       clearPhoto();
     }
@@ -213,24 +219,20 @@ $(document).ready(function () {
     photo.attr('src', data);
   }
 
-  // Clear photo placeholder
   clearPhoto();
 
-  // Open the modal and activate the camera on camera icon click
   cameraIcon.on('click', function () {
-    // Preserve the current scroll position
     scrollPosition = window.pageYOffset;
     body.css({
       position: 'fixed',
       top: `-${scrollPosition}px`,
       width: '100%',
     });
-    body.addClass('no-scroll');  // Add no-scroll class to body
+    body.addClass('no-scroll');  
     cameraModal.show();
     getMediaStream(constraints);
   });
 
-  // Event listeners for buttons inside the modal
   $('#switchFrontBtn').on('click', function () {
     switchCamera("user");
   });
@@ -244,20 +246,21 @@ $(document).ready(function () {
     event.preventDefault();
   });
 
-  // Ensure the camera stream stops when the modal is closed
   cameraModalEl.on('hidden.bs.modal', function () {
     if (mediaStream) {
       mediaStream.getTracks().forEach(track => track.stop());
       $('#cam').attr('srcObject', null);
     }
-    body.removeClass('no-scroll');  // Remove no-scroll class from body
-    // Reset the body's scroll position
+    body.removeClass('no-scroll');  
     body.css({
       position: '',
       top: '',
       width: '',
     });
-    window.scrollTo(0, scrollPosition); // Restore the scroll position
+    window.scrollTo(0, scrollPosition);
+
+    // Reset visibility of buttons and video when modal closes
+    $('#switchFrontBtn, #switchBackBtn, #cam').show();
+    $('.thank-you-message').hide();
   });
 });
-
