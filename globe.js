@@ -179,7 +179,7 @@ const handleClick = (event) => {
     // Check if the clicked country is Pakistan
     if (name === 'Pakistan') {
       // Trigger the link click event to download the CV
-      window.open('/Touseef-Shahbaz.pdf.pdf', '_blank');    }
+      window.open('./Touseef-Shahbaz.pdf.pdf', '_blank');    }
   }
 };
 
