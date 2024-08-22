@@ -79,7 +79,7 @@ body {
   color: #fff;
   font-size: 1rem;
   font-family: 'Philosopher', sans-serif;
-  overflow-x: hidden;
+  overflow: hidden !important;
 }
 
 nav {
