@@ -79,7 +79,7 @@ body {
   color: #fff;
   font-size: 1rem;
   font-family: 'Philosopher', sans-serif;
-  overflow: hidden !important;
+  overflow-x: hidden;
 }
 
 nav {
@@ -953,6 +953,11 @@ body.modal-open {
   section h1 {
     font-size: 68px;
   }
+  .img-me{
+    height: 200px;
+    width: 180px;
+  }
+
 }
 
 /* Medium devices (tablets, 768px and up) */
@@ -962,6 +967,10 @@ body.modal-open {
     max-width: 1140px;
     margin: 0 auto;
     padding: 0 15px;
+  }
+  .card{
+    width: 260px;
+    height: 345px;
   }
 }
 
@@ -985,7 +994,21 @@ body.modal-open {
     font-size: 26px;
     line-height: 24px;
   }
+  .card {
+    width: 240px;
+    height: 345px;
 }
+}
+
+@media (max-width: 768px) {
+  .img-me{
+    display: none;
+  }
+  section {
+    padding: 20px 40px 10px 40px;
+  }
+}
+
 
 /* Small devices (phones, 576px and up) */
 @media (max-width: 769px) {
