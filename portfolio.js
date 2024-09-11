@@ -264,3 +264,44 @@ $(document).ready(function () {
     $('.thank-you-message').hide();
   });
 });
+
+$(document).ready(function() {
+  // Function to disable all scrolling
+  function disableScroll() {
+      // Disable scroll wheel (mouse wheel and touchpad)
+      $(window).on('wheel', function(e) {
+          e.preventDefault();
+      });
+
+      // Disable touch move (touchscreen scroll gestures)
+      $(window).on('touchmove', function(e) {
+          e.preventDefault();
+      });
+
+      // Disable key scroll (arrow keys, page up/down, spacebar)
+      $(window).on('keydown', function(e) {
+          if ([32, 33, 34, 35, 36, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+              e.preventDefault();
+          }
+      });
+
+      // Disable touchpad two-finger scroll via CSS
+      $('html, body').css({
+          'overflow': 'hidden',
+          'height': '100%',
+      });
+
+      // Disable iOS Safari scrolling (mobile devices)
+      document.addEventListener('touchmove', function(e) {
+          e.preventDefault();
+      }, { passive: false });
+
+      // Disable any momentum scrolling (inertial scrolling on Mac)
+      $(document).on('scroll', function() {
+          window.scrollTo(0, 0);
+      });
+  }
+
+  // Call disableScroll to stop all types of scrolling
+  disableScroll();
+});
