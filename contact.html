@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Touseef: Portfolio</title>
+  <meta name="author" content="Touseef Shahbaz" />
+  <meta name="keywords" content="Web Developer" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A web developer's portfolio created with Bootstrap 5 and JavaScript." />
+
+  <!-- CSS Libraries -->
+  <link rel="icon" href="./assets/profile.png" style="border-radius: 30%;" type="image/x-icon">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+  <link href="style.css" rel="stylesheet">
+  <link href="anemation.css" rel="stylesheet">
+
+  <!-- jQuery Library -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+      <a href="./index.html" data-anchor="about">About</a>
+      <a href="./experties.html" data-anchor="experties">Experties</a>
+      <a href="./projects.html" data-anchor="projects">Projects</a>
+      <a href="./contact.html" data-anchor="contact">Contact</a>
+    </nav>
+
+
+
+
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <div class="container">
+            <div class="phone-graphic">
+              <div class="phone-case">
+                <div class="phone-container-outer">
+                  <div class="phone-container-inner">
+                    <div class="phone-header">
+                      <p class="phone-header-time">1:02</p>
+                      <p class="phone-header-icons">
+                        <i class="fas fa-signal"></i>
+                        <i class="fas fa-wifi"></i>
+                        <i class="fas fa-battery-full"></i>
+                      </p>
+
+                    </div>
+                    <div class="contact-image">
+                      <span class="material-icons">person</span>
+                    </div>
+                    <p class="contact-phone">+923238459887</p>
+                    <div class="phone-messages">
+                      <div class="message message-you">
+                        <p class="text-white">Email</p>
+                      </div>
+                      <div class="message message-contact">
+                        <p>Tosif.shahbax@gmail.com</p>
+                      </div>
+                      <div class="message message-you">
+                        <p class="text-white">LinkedIN</p>
+                      </div>
+                      <div class="message message-contact">
+                        <p><a href="https://www.linkedin.com/in/touseef-shahbaz-f212200/" target="_blank">Touseef
+                            Shahbaz</a></p>
+                      </div>
+                      <div class="message message-you">
+                        <p class="text-white">GitHub</p>
+                      </div>
+                      <div class="message message-contact">
+                        <p> <a href="https://github.com/Touseef1122">Touseef1122</a></p>
+                      </div>
+                      <div class="message message-contact">
+                        <p>If you need more information please click on "Dowmload CV" or find Pakistan and click on it.
+                        </p>
+                      </div>
+                      <div class="message message-contact">
+                        <p class="text-danger">Warning Dont Click On Camera. Thank you !</p>
+                      </div>
+                    </div>
+                    <div class="phone-footer">
+                      <div class="phone-footer-icons">
+                        <i class="fas fa-camera" id="camera-icon" style="cursor: pointer; font-size: 24px;"></i>
+                      </div>
+
+                      <!-- Modal HTML -->
+                      <div id="cameraModal" class="modal fade" tabindex="-1" aria-labelledby="cameraModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+
+                          <div class="modal-content">
+
+                            <!-- <div class="modal-header">
+                              <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                            </div> -->
+                            <div class="modal-body">
+                              <!-- <button type="button" class="btn-close float-inline-end" data-bs-dismiss="modal">Close</button> -->
+
+                              <div class="panel">
+                                <button class="panel-button" id="switchFrontBtn" >Front Camera</button>
+                                <button class="panel-button" id="switchBackBtn">Back Camera</button>
+                                <button class="panel-button" id="snapBtn">Snap</button>
+                              </div>
+                              <div style="width:100%">
+                                <video id="cam" width="300px" autoplay muted playsinline>Not available</video>
+                                <canvas id="canvas" style="display:none"></canvas>
+                                <p class="thank-you-message text-center text-dark" style="display: none; font-size: 20px;">
+                                  Thank you for visiting my portfolio! I hope you enjoyed exploring my work.
+                                </p>
+                                
+                                <img id="photo" width="300px" alt="The screen capture will appear in this box.">
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="phone-footer-input">
+                        <p>Text Message</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> <!-- .phone-case -->
+            </div> <!-- .phone-graphic -->
+          </div>
+        </div> <!-- .col-12 col-md-6 -->
+
+        <div class="col-12 col-md-6">
+          <div class="globe-bg">
+            <canvas id="globe"></canvas>
+            <div id='countryLabel'></div>
+            <a class="contact-btn" href="./Touseef-Shahbaz.pdf.pdf" target="_blank">
+              Download CV
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- JavaScript -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://unpkg.com/topojson@3.0.2/dist/topojson.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  <!-- Ensure the external libraries are loaded first -->
+  <script type="module" src="globe.js"></script>
+  <script src="portfolio.js"></script>
+</body>
+
+</html>
