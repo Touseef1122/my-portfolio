@@ -1,21 +1,17 @@
-
-
-
 //--===============-====================-======================-=======================
 
-
-// Add this script to portfolio.js
-
 document.addEventListener('DOMContentLoaded', () => {
-    const showContentBtn = document.getElementById('showContentBtn');
-    const body = document.body;
+  const body = document.body;
+  const showContentBtn = document.getElementById('showContentBtn');
 
-    showContentBtn.addEventListener('click', () => {
-        body.classList.remove('hidden');
-        body.classList.add('show');
-        showContentBtn.style.display = 'none';
-    });
+  // Show the loader for 3 seconds
+  setTimeout(() => {
+      body.classList.remove('hidden');
+      body.classList.add('show');
+      showContentBtn.style.display = 'none'; // Hide the loader
+  }, 3000); // 3000ms = 3 seconds
 });
+
 
 $(document).ready(function () {
     let isScrolling = false;
@@ -58,16 +54,6 @@ $(document).ready(function () {
 });
 
 
-
-
-// function toggle_div_fun(id) {
-//   var divelement = document.getElementById(id);
-//   if (divelement.style.display === 'none') {
-//       divelement.style.display = 'block';
-//   } else {
-//       divelement.style.display = 'none';
-//   }
-// }
 
 
 $(document).ready(function () {

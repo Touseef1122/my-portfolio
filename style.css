@@ -48,6 +48,7 @@ body.hidden {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  background-color: black;
 }
 
 /* Disable body scroll when modal is open */
