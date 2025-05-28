@@ -2,14 +2,13 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   const body = document.body;
-  const showContentBtn = document.getElementById('showContentBtn');
+  const showContentBtn = document.getElementById('showContentBtn, showContentBtn1 , showContentBtn2 , showContentBtn3');
 
-  // Show the loader for 3 seconds
   setTimeout(() => {
       body.classList.remove('hidden');
       body.classList.add('show');
-      showContentBtn.style.display = 'none'; // Hide the loader
-  }, 3000); // 3000ms = 3 seconds
+      showContentBtn.style.display = 'none'; 
+  }, 3000); 
 });
 
 
